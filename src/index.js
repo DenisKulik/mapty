@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import './index.html';
-import './libs/normalize.css';
 
 // Import CSS from Leaflet and plugins
 import 'leaflet/dist/leaflet.css';
