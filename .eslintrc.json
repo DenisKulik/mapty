@@ -11,6 +11,7 @@
   },
   "rules": {
     "linebreak-style": ["error", "unix"],
+    "no-undef": "off",
     "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
     "comma-dangle": ["error", "only-multiline"],
     "operator-linebreak": [
