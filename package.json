@@ -43,6 +43,7 @@
     "@types/leaflet-markercluster": "^1.0.3",
     "core-js": "^3.26.1",
     "leaflet": "^1.9.3",
-    "leaflet.markercluster": "^1.5.3"
+    "leaflet.markercluster": "^1.5.3",
+    "normalize.css": "^8.0.1"
   }
 }
