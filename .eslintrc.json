@@ -14,6 +14,7 @@
     "no-undef": "off",
     "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
     "comma-dangle": ["error", "only-multiline"],
+    "lines-between-class-members": "off",
     "operator-linebreak": [
       "error",
       "after",
