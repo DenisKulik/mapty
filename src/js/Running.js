@@ -6,8 +6,8 @@ export default class Running extends Workout {
   constructor(coords, distance, duration, cadence) {
     super(coords, distance, duration);
     this.cadence = cadence;
-
     this.caclPace();
+    this._setDescription();
   }
 
   caclPace() {
