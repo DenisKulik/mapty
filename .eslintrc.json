@@ -16,6 +16,8 @@
     "comma-dangle": ["error", "only-multiline"],
     "lines-between-class-members": "off",
     "no-unused-vars": "off",
+    "no-tabs": ["error", { "allowIndentationTabs": true }],
+    "no-underscore-dangle": "off",
     "operator-linebreak": [
       "error",
       "after",
