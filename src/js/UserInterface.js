@@ -11,6 +11,7 @@ export default class UserInterface {
   inputElevation = document.querySelector('.form__input--elevation');
 
   #map;
+  #mapZoomLevel = 13;
   #mapEvent;
   #workouts = [];
 
@@ -21,6 +22,10 @@ export default class UserInterface {
     this.inputType.addEventListener(
       'change',
       this.#toggleElevationField.bind(this)
+    );
+    this.containerWorkouts.addEventListener(
+      'click',
+      this.#moveToPopup.bind(this)
     );
   }
 
@@ -39,7 +44,7 @@ export default class UserInterface {
     const { longitude } = position.coords;
     const coords = [latitude, longitude];
 
-    this.#map = L.map('map').setView(coords, 13);
+    this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
@@ -202,5 +207,23 @@ export default class UserInterface {
     }
 
     this.form.insertAdjacentHTML('afterend', html);
+  }
+
+  #moveToPopup(e) {
+    const workoutEl = e.target.closest('.workout');
+
+    // eslint-disable-next-line no-useless-return
+    if (!workoutEl) return;
+
+    const workout = this.#workouts.find(
+      (work) => work.id === workoutEl.dataset.id
+    );
+
+    this.#map.setView(workout.coords, this.#mapZoomLevel, {
+      animate: true,
+      pan: {
+        duration: 1,
+      },
+    });
   }
 }
