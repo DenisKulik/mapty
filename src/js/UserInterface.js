@@ -16,8 +16,13 @@ export default class UserInterface {
   #workouts = [];
 
   constructor() {
+    // get user's position
     this.#getPosition();
 
+    // get data from local storage
+    this.#getLocalStorage();
+
+    // attach event handlers
     this.form.addEventListener('submit', this.#newWorkout.bind(this));
     this.inputType.addEventListener(
       'change',
@@ -53,6 +58,11 @@ export default class UserInterface {
 
     // handlich clicks on the map
     this.#map.on('click', this.#showForm.bind(this));
+
+    // render markers
+    this.#workouts.forEach((work) => {
+      this.#renderWorkoutMarker(work);
+    });
   }
 
   #showForm(mapE) {
@@ -138,6 +148,9 @@ export default class UserInterface {
 
     // hide form and clear input fields
     this.#hideForm();
+
+    // set local storage to all workouts
+    this.#setLocalStorage();
   }
 
   #renderWorkoutMarker(workout) {
@@ -224,6 +237,23 @@ export default class UserInterface {
       pan: {
         duration: 1,
       },
+    });
+  }
+
+  #setLocalStorage() {
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
+
+  #getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('workouts'));
+
+    // eslint-disable-next-line no-useless-return
+    if (!data) return;
+
+    this.#workouts = data;
+
+    this.#workouts.forEach((work) => {
+      this.#renderWorkout(work);
     });
   }
 }
