@@ -24,17 +24,15 @@ html {
 }
 
 body {
+	display: flex;
+	height: 100vh;
+	padding: 2.5rem;
 	font-family: "Manrope", sans-serif;
 	color: var(--color-light--2);
 	font-weight: 400;
 	line-height: 1.6;
-	height: 100vh;
 	overscroll-behavior-y: none;
-
 	background-color: #fff;
-	padding: 2.5rem;
-
-	display: flex;
 }
 
 /* GENERAL */
@@ -45,7 +43,7 @@ a:visited {
 
 /* SIDEBAR */
 .sidebar {
-	flex-basis: 50rem;
+	flex-basis: 40rem;
 	background-color: var(--color-dark--1);
 	padding: 3rem 5rem 4rem 5rem;
 	display: flex;
@@ -62,7 +60,7 @@ a:visited {
 	list-style: none;
 	height: 77vh;
 	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow-x: scroll;
 }
 
 .workouts::-webkit-scrollbar {
@@ -287,4 +285,42 @@ a:visited {
 	background-color: rgba(0, 0, 0, 0.6);
 	backdrop-filter: blur(3px);
 	z-index: 5;
+}
+
+@media (max-width: 1024px) {
+	html {
+		font-size: 50%;
+	}
+
+	.sidebar {
+		padding: 2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	html {
+		font-size: 40%;
+	}
+
+	body {
+		flex-direction: column;
+	}
+
+	.sidebar {
+		height: 50vh;
+		padding: 1rem;
+		overflow-x: scroll;
+	}
+
+	.sidebar img {
+		margin-bottom: 1rem;
+	}
+
+	.workouts {
+		margin: 0 auto;
+	}
+
+	.copyright {
+		display: none;
+	}
 }
